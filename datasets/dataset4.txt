@@ -1,0 +1,3 @@
+A software toolkit contains reusable modules and utilities.
+Modular design makes a project easier to maintain and extend.
+Version control helps developers track changes to their code.

@@ -1,0 +1,3 @@
+Data analysis can reveal useful information from large text files.
+Character frequency and word statistics are simple examples of analysis.
+These techniques can support future cryptanalysis assignments.

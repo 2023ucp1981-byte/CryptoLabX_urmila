@@ -1,0 +1,32 @@
+CryptoLabX - File Analysis Report
+========================================
+File Name           : dataset2.txt
+Number of Characters: 191
+Number of Words     : 26
+Number of Lines     : 3
+Unique Characters   : 28
+
+Letter Frequency:
+-------------------------
+A : 16
+C : 7
+D : 4
+E : 15
+F : 5
+G : 2
+H : 5
+I : 12
+K : 1
+L : 6
+M : 2
+N : 15
+O : 5
+P : 5
+Q : 1
+R : 10
+S : 20
+T : 12
+U : 5
+W : 2
+Y : 11
+Z : 1

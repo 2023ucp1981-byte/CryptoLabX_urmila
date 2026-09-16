@@ -1,0 +1,3 @@
+Cryptanalysis is the study of analyzing encrypted information.
+A cryptanalyst searches for patterns and weaknesses in a system.
+Frequency analysis is useful when studying historical ciphers.
