@@ -1,0 +1,15 @@
+Test Case 1
+Plaintext: this is a simple secret message
+Actual Key: 5
+
+Test Case 2
+Plaintext: cryptography is important for security
+Actual Key: 8
+
+Test Case 3
+Plaintext: the quick brown fox jumps over the lazy dog
+Actual Key: 13
+
+Test Case 4
+Plaintext: computer science students learn cryptography
+Actual Key: 3
