@@ -1,0 +1,617 @@
+========== MONOALPHABETIC SUBSTITUTION CIPHER ==========
+
+Plaintext loaded successfully.
+
+Plaintext:
+WAS PROTECTED USING ONE-TIME PAD ENCRYPTION, WHERE THE GOVERNMENTS OF THE
+US AND THE USSR WOULD EXCHANGE EXTREMELY LONG KEYS USING TRUSTED COURIERS
+CARRYING BRIEFCASES OF PAPER ON WHICH RANDOM CHARACTERS WERE WRITTEN.
+NOTWITHSTANDING THE ABOVE, ONE-TIME PAD ENCRYPTION IS RARELY USED NOWADAYS BECAUSE IT HAS A NUMBER OF DRAWBACKS. MOST PROMINENT IS THAT THE KEY IS
+AS LONG AS THE MESSAGE.
+2 THIS LIMITS THE USEFULNESS OF THE SCHEME FOR SENDING
+VERY LONG MESSAGES (AS IT MAY BE DIFFICULT TO SECURELY SHARE AND STORE A VERY
+LONG KEY), AND IS PROBLEMATIC WHEN THE PARTIES CANNOT PREDICT IN ADVANCE (AN
+UPPER BOUND ON) HOW LONG THE MESSAGE WILL BE.
+MOREOVER, THE ONE-TIME PAD—AS THE NAME INDICATES—IS ONLY SECURE IF USED
+ONCE (WITH A GIVEN KEY). ALTHOUGH WE DID NOT YET DEFINE A NOTION OF SECRECY
+WHEN MULTIPLE MESSAGES ARE ENCRYPTED, IT IS EASY TO SEE THAT ENCRYPTING MORE
+THAN ONE MESSAGE WITH THE SAME KEY LEAKS A LOT OF INFORMATION. IN PARTICULAR,
+SAY TWO MESSAGES M, M0 ARE ENCRYPTED USING THE SAME (UNKNOWN) KEY K. AN
+ADVERSARY WHO OBTAINS C = M ⊕ K AND C
+0 = M0 ⊕ K CAN COMPUTE
+C ⊕ C
+0 = (M ⊕ K) ⊕ (M0 ⊕ K) = M ⊕ M0
+AND THUS LEARN THE XOR OF THE TWO MESSAGES OR, EQUIVALENTLY, EXACTLY WHERE
+THE TWO MESSAGES DIFFER. THIS ATTACK EXTENDS TO MORE THAN TWO MESSAGES AS
+WELL, WHERE IT ENABLES THE ATTACKER TO LEARN THE XOR OF ALL PAIRS OF MESSAGES.
+WHILE THIS MAY NOT SEEM VERY SIGNIFICANT, IT IS ENOUGH TO RULE OUT ANY CLAIMS
+OF PERFECT SECRECY FOR ENCRYPTING MORE THAN ONE MESSAGE USING THE SAME KEY.
+MOREOVER, IF THE MESSAGES CORRESPOND TO NATURAL-LANGUAGE TEXT, THEN GIVEN
+THE XOR OF SUFFICIENTLY MANY PAIRS OF MESSAGES—OR EVEN TWO SUFFICIENTLY LONG
+MESSAGES—IT IS POSSIBLE TO PERFORM FREQUENCY ANALYSIS (AS IN THE PREVIOUS
+CHAPTER, THOUGH MORE COMPLEX) AND RECOVER THE MESSAGES THEMSELVES. (SEE
+EXERCISE 2.16 FOR AN EXAMPLE.) AN INTERESTING HISTORICAL EXAMPLE OF THIS IS
+GIVEN BY THE VENONA PROJECT, AS PART OF WHICH THE US AND UK WERE ABLE TO
+DECRYPT CIPHERTEXTS SENT BY THE SOVIET UNION THAT WERE MISTAKENLY ENCRYPTED
+WITH REPEATED PORTIONS OF A ONE-TIME PAD OVER SEVERAL DECADES
+
+
+========== CIPHERTEXT ==========
+VQL HKGZTEZTR XLOFU GFT-ZODT HQR TFEKNHZOGF, VITKT ZIT UGCTKFDTFZL GY ZIT
+XL QFR ZIT XLLK VGXSR TBEIQFUT TBZKTDTSN SGFU ATNL XLOFU ZKXLZTR EGXKOTKL
+EQKKNOFU WKOTYEQLTL GY HQHTK GF VIOEI KQFRGD EIQKQEZTKL VTKT VKOZZTF.
+FGZVOZILZQFROFU ZIT QWGCT, GFT-ZODT HQR TFEKNHZOGF OL KQKTSN XLTR FGVQRQNL WTEQXLT OZ IQL Q FXDWTK GY RKQVWQEAL. DGLZ HKGDOFTFZ OL ZIQZ ZIT ATN OL
+QL SGFU QL ZIT DTLLQUT.
+2 ZIOL SODOZL ZIT XLTYXSFTLL GY ZIT LEITDT YGK LTFROFU
+CTKN SGFU DTLLQUTL (QL OZ DQN WT ROYYOEXSZ ZG LTEXKTSN LIQKT QFR LZGKT Q CTKN
+SGFU ATN), QFR OL HKGWSTDQZOE VITF ZIT HQKZOTL EQFFGZ HKTROEZ OF QRCQFET (QF
+XHHTK WGXFR GF) IGV SGFU ZIT DTLLQUT VOSS WT.
+DGKTGCTK, ZIT GFT-ZODT HQR—QL ZIT FQDT OFROEQZTL—OL GFSN LTEXKT OY XLTR
+GFET (VOZI Q UOCTF ATN). QSZIGXUI VT ROR FGZ NTZ RTYOFT Q FGZOGF GY LTEKTEN
+VITF DXSZOHST DTLLQUTL QKT TFEKNHZTR, OZ OL TQLN ZG LTT ZIQZ TFEKNHZOFU DGKT
+ZIQF GFT DTLLQUT VOZI ZIT LQDT ATN STQAL Q SGZ GY OFYGKDQZOGF. OF HQKZOEXSQK,
+LQN ZVG DTLLQUTL D, D0 QKT TFEKNHZTR XLOFU ZIT LQDT (XFAFGVF) ATN A. QF
+QRCTKLQKN VIG GWZQOFL E = D ⊕ A QFR E
+0 = D0 ⊕ A EQF EGDHXZT
+E ⊕ E
+0 = (D ⊕ A) ⊕ (D0 ⊕ A) = D ⊕ D0
+QFR ZIXL STQKF ZIT BGK GY ZIT ZVG DTLLQUTL GK, TJXOCQSTFZSN, TBQEZSN VITKT
+ZIT ZVG DTLLQUTL ROYYTK. ZIOL QZZQEA TBZTFRL ZG DGKT ZIQF ZVG DTLLQUTL QL
+VTSS, VITKT OZ TFQWSTL ZIT QZZQEATK ZG STQKF ZIT BGK GY QSS HQOKL GY DTLLQUTL.
+VIOST ZIOL DQN FGZ LTTD CTKN LOUFOYOEQFZ, OZ OL TFGXUI ZG KXST GXZ QFN ESQODL
+GY HTKYTEZ LTEKTEN YGK TFEKNHZOFU DGKT ZIQF GFT DTLLQUT XLOFU ZIT LQDT ATN.
+DGKTGCTK, OY ZIT DTLLQUTL EGKKTLHGFR ZG FQZXKQS-SQFUXQUT ZTBZ, ZITF UOCTF
+ZIT BGK GY LXYYOEOTFZSN DQFN HQOKL GY DTLLQUTL—GK TCTF ZVG LXYYOEOTFZSN SGFU
+DTLLQUTL—OZ OL HGLLOWST ZG HTKYGKD YKTJXTFEN QFQSNLOL (QL OF ZIT HKTCOGXL
+EIQHZTK, ZIGXUI DGKT EGDHSTB) QFR KTEGCTK ZIT DTLLQUTL ZITDLTSCTL. (LTT
+TBTKEOLT 2.16 YGK QF TBQDHST.) QF OFZTKTLZOFU IOLZGKOEQS TBQDHST GY ZIOL OL
+UOCTF WN ZIT CTFGFQ HKGPTEZ, QL HQKZ GY VIOEI ZIT XL QFR XA VTKT QWST ZG
+RTEKNHZ EOHITKZTBZL LTFZ WN ZIT LGCOTZ XFOGF ZIQZ VTKT DOLZQATFSN TFEKNHZTR
+VOZI KTHTQZTR HGKZOGFL GY Q GFT-ZODT HQR GCTK LTCTKQS RTEQRTL
+
+
+========== LETTER FREQUENCY ANALYSIS ==========
+Letter    Count     Percent     
+----------------------------------------
+T         244       14.87%
+Z         139       8.47%
+L         137       8.35%
+Q         125       7.62%
+F         115       7.01%
+G         107       6.52%
+K         98        5.97%
+O         96        5.85%
+I         69        4.20%
+D         60        3.66%
+E         58        3.53%
+S         50        3.05%
+N         43        2.62%
+U         42        2.56%
+H         40        2.44%
+X         40        2.44%
+R         40        2.44%
+Y         36        2.19%
+V         31        1.89%
+C         21        1.28%
+A         19        1.16%
+W         15        0.91%
+B         13        0.79%
+J         2         0.12%
+P         1         0.06%
+M         0         0.00%
+
+Most frequent ciphertext letters:
+T (244)
+Z (139)
+L (137)
+Q (125)
+F (115)
+
+========== WORD FREQUENCY ANALYSIS ==========
+ZIT -> 27
+GY -> 15
+DTLLQUTL -> 11
+OL -> 9
+ZG -> 8
+D -> 8
+QL -> 7
+QFR -> 7
+ATN -> 6
+SGFU -> 6
+GFT -> 6
+OZ -> 6
+Q -> 6
+ZVG -> 5
+A -> 5
+XLOFU -> 4
+ZODT -> 4
+QF -> 4
+DGKT -> 4
+HQR -> 4
+DTLLQUT -> 4
+ZIOL -> 4
+E -> 4
+VTKT -> 3
+VOZI -> 3
+UOCTF -> 3
+TFEKNHZTR -> 3
+YGK -> 3
+ZIQF -> 3
+LQDT -> 3
+CTKN -> 3
+VITKT -> 3
+ZIQZ -> 3
+OF -> 3
+BGK -> 3
+XLTR -> 2
+FGZ -> 2
+LTEKTEN -> 2
+QKT -> 2
+DQN -> 2
+LTT -> 2
+TFEKNHZOFU -> 2
+WT -> 2
+GF -> 2
+VITF -> 2
+VIOEI -> 2
+TFEKNHZOGF -> 2
+DGKTGCTK -> 2
+OY -> 2
+STQKF -> 2
+XL -> 2
+GK -> 2
+HQOKL -> 2
+LXYYOEOTFZSN -> 2
+TBQDHST -> 2
+WN -> 2
+KQFRGD -> 1
+EIQKQEZTKL -> 1
+ROYYOEXSZ -> 1
+XLLK -> 1
+LTEXKTSN -> 1
+LIQKT -> 1
+LZGKT -> 1
+HKGWSTDQZOE -> 1
+VKOZZTF -> 1
+HQKZOTL -> 1
+EQFFGZ -> 1
+HKTROEZ -> 1
+FGZVOZILZQFROFU -> 1
+QRCQFET -> 1
+QWGCT -> 1
+XHHTK -> 1
+WGXFR -> 1
+IGV -> 1
+VOSS -> 1
+VGXSR -> 1
+FQDT -> 1
+OFROEQZTL -> 1
+GFSN -> 1
+LTEXKT -> 1
+KQKTSN -> 1
+GFET -> 1
+TBEIQFUT -> 1
+FGVQRQNL -> 1
+QSZIGXUI -> 1
+VT -> 1
+ROR -> 1
+WTEQXLT -> 1
+NTZ -> 1
+RTYOFT -> 1
+FGZOGF -> 1
+TBZKTDTSN -> 1
+DXSZOHST -> 1
+IQL -> 1
+HKGZTEZTR -> 1
+TQLN -> 1
+FXDWTK -> 1
+RKQVWQEAL -> 1
+DGLZ -> 1
+HKGDOFTFZ -> 1
+ATNL -> 1
+STQAL -> 1
+SGZ -> 1
+OFYGKDQZOGF -> 1
+HQKZOEXSQK -> 1
+LQN -> 1
+ZKXLZTR -> 1
+EGXKOTKL -> 1
+XFAFGVF -> 1
+EQKKNOFU -> 1
+QRCTKLQKN -> 1
+VIG -> 1
+GWZQOFL -> 1
+WKOTYEQLTL -> 1
+EQF -> 1
+EGDHXZT -> 1
+ZIXL -> 1
+SODOZL -> 1
+XLTYXSFTLL -> 1
+LEITDT -> 1
+TJXOCQSTFZSN -> 1
+TBQEZSN -> 1
+ROYYTK -> 1
+QZZQEA -> 1
+TBZTFRL -> 1
+VTSS -> 1
+TFQWSTL -> 1
+QZZQEATK -> 1
+QSS -> 1
+HQHTK -> 1
+VIOST -> 1
+LTTD -> 1
+LOUFOYOEQFZ -> 1
+TFGXUI -> 1
+KXST -> 1
+GXZ -> 1
+QFN -> 1
+ESQODL -> 1
+HTKYTEZ -> 1
+EGKKTLHGFR -> 1
+FQZXKQS -> 1
+SQFUXQUT -> 1
+ZTBZ -> 1
+ZITF -> 1
+LTFROFU -> 1
+DQFN -> 1
+TCTF -> 1
+HGLLOWST -> 1
+HTKYGKD -> 1
+YKTJXTFEN -> 1
+QFQSNLOL -> 1
+HKTCOGXL -> 1
+EIQHZTK -> 1
+ZIGXUI -> 1
+EGDHSTB -> 1
+KTEGCTK -> 1
+ZITDLTSCTL -> 1
+TBTKEOLT -> 1
+VQL -> 1
+OFZTKTLZOFU -> 1
+IOLZGKOEQS -> 1
+UGCTKFDTFZL -> 1
+CTFGFQ -> 1
+HKGPTEZ -> 1
+HQKZ -> 1
+XA -> 1
+QWST -> 1
+RTEKNHZ -> 1
+EOHITKZTBZL -> 1
+LTFZ -> 1
+LGCOTZ -> 1
+XFOGF -> 1
+DOLZQATFSN -> 1
+KTHTQZTR -> 1
+HGKZOGFL -> 1
+GCTK -> 1
+LTCTKQS -> 1
+RTEQRTL -> 1
+
+One-letter words:
+Q Q Q Q Q D D A E D A E D A E E D A D A D D Q 
+
+Two-letter words:
+GY XL GY GF OL OZ GY OL OL QL QL GY QL OZ WT ZG OL OF QF GF WT QL OL OY VT GY OZ OL ZG GY OF QF GY GK ZG QL OZ ZG GY GY OZ OL ZG GY OY ZG GY GY GK OZ OL ZG QL OF QF QF GY OL WN QL GY XL XA ZG WN GY 
+
+Three-letter words:
+VQL GFT HQR ZIT ZIT QFR ZIT ZIT GFT HQR IQL ZIT ATN ZIT ZIT ZIT YGK DQN QFR ATN QFR ZIT IGV ZIT ZIT GFT HQR ZIT ATN ROR FGZ NTZ QKT LTT GFT ZIT ATN SGZ LQN ZVG QKT ZIT ATN VIG QFR EQF QFR ZIT BGK ZIT ZVG ZIT ZVG ZVG ZIT ZIT BGK QSS DQN FGZ GXZ QFN YGK GFT ZIT ATN ZIT ZIT BGK ZVG ZIT QFR ZIT LTT YGK ZIT ZIT QFR ZIT GFT HQR 
+
+========== PATTERN ANALYSIS ==========
+GFT -> 012  [repeated pattern]
+HQR -> 012  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+XL -> 01  [repeated pattern]
+QFR -> 012  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+VGXSR -> 01234  [repeated pattern]
+SGFU -> 0123  [repeated pattern]
+ATNL -> 0123  [repeated pattern]
+XLOFU -> 01234  [repeated pattern]
+GY -> 01  [repeated pattern]
+GF -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+QWGCT -> 01234  [repeated pattern]
+GFT -> 012  [repeated pattern]
+ZODT -> 0123  [repeated pattern]
+HQR -> 012  [repeated pattern]
+TFEKNHZOGF -> 0123456781  [repeated pattern]
+OL -> 01  [repeated pattern]
+XLTR -> 0123  [repeated pattern]
+OZ -> 01  [repeated pattern]
+IQL -> 012  [repeated pattern]
+FXDWTK -> 012345  [repeated pattern]
+GY -> 01  [repeated pattern]
+DGLZ -> 0123  [repeated pattern]
+OL -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+ATN -> 012  [repeated pattern]
+OL -> 01  [repeated pattern]
+QL -> 01  [repeated pattern]
+SGFU -> 0123  [repeated pattern]
+QL -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+ZIOL -> 0123  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+GY -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+YGK -> 012  [repeated pattern]
+CTKN -> 0123  [repeated pattern]
+SGFU -> 0123  [repeated pattern]
+QL -> 01  [repeated pattern]
+OZ -> 01  [repeated pattern]
+DQN -> 012  [repeated pattern]
+WT -> 01  [repeated pattern]
+ZG -> 01  [repeated pattern]
+LIQKT -> 01234  [repeated pattern]
+QFR -> 012  [repeated pattern]
+LZGKT -> 01234  [repeated pattern]
+Q -> 0  [repeated pattern]
+CTKN -> 0123  [repeated pattern]
+SGFU -> 0123  [repeated pattern]
+ATN -> 012  [repeated pattern]
+QFR -> 012  [repeated pattern]
+OL -> 01  [repeated pattern]
+VITF -> 0123  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+HKTROEZ -> 0123456  [repeated pattern]
+OF -> 01  [repeated pattern]
+QF -> 01  [repeated pattern]
+WGXFR -> 01234  [repeated pattern]
+GF -> 01  [repeated pattern]
+IGV -> 012  [repeated pattern]
+SGFU -> 0123  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+DTLLQUT -> 0122341  [repeated pattern]
+WT -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+GFT -> 012  [repeated pattern]
+ZODT -> 0123  [repeated pattern]
+HQR -> 012  [repeated pattern]
+QL -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+FQDT -> 0123  [repeated pattern]
+OL -> 01  [repeated pattern]
+GFSN -> 0123  [repeated pattern]
+OY -> 01  [repeated pattern]
+XLTR -> 0123  [repeated pattern]
+GFET -> 0123  [repeated pattern]
+VOZI -> 0123  [repeated pattern]
+Q -> 0  [repeated pattern]
+UOCTF -> 01234  [repeated pattern]
+ATN -> 012  [repeated pattern]
+VT -> 01  [repeated pattern]
+FGZ -> 012  [repeated pattern]
+NTZ -> 012  [repeated pattern]
+RTYOFT -> 012341  [repeated pattern]
+Q -> 0  [repeated pattern]
+GY -> 01  [repeated pattern]
+VITF -> 0123  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+QKT -> 012  [repeated pattern]
+OZ -> 01  [repeated pattern]
+OL -> 01  [repeated pattern]
+TQLN -> 0123  [repeated pattern]
+ZG -> 01  [repeated pattern]
+ZIQZ -> 0120  [repeated pattern]
+DGKT -> 0123  [repeated pattern]
+ZIQF -> 0123  [repeated pattern]
+GFT -> 012  [repeated pattern]
+DTLLQUT -> 0122341  [repeated pattern]
+VOZI -> 0123  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+LQDT -> 0123  [repeated pattern]
+ATN -> 012  [repeated pattern]
+STQAL -> 01234  [repeated pattern]
+Q -> 0  [repeated pattern]
+SGZ -> 012  [repeated pattern]
+GY -> 01  [repeated pattern]
+OF -> 01  [repeated pattern]
+LQN -> 012  [repeated pattern]
+ZVG -> 012  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+D -> 0  [repeated pattern]
+D -> 0  [repeated pattern]
+QKT -> 012  [repeated pattern]
+TFEKNHZTR -> 012345607  [repeated pattern]
+XLOFU -> 01234  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+LQDT -> 0123  [repeated pattern]
+ATN -> 012  [repeated pattern]
+A -> 0  [repeated pattern]
+QF -> 01  [repeated pattern]
+VIG -> 012  [repeated pattern]
+GWZQOFL -> 0123456  [repeated pattern]
+E -> 0  [repeated pattern]
+D -> 0  [repeated pattern]
+A -> 0  [repeated pattern]
+QFR -> 012  [repeated pattern]
+E -> 0  [repeated pattern]
+D -> 0  [repeated pattern]
+A -> 0  [repeated pattern]
+EQF -> 012  [repeated pattern]
+EGDHXZT -> 0123456  [repeated pattern]
+E -> 0  [repeated pattern]
+E -> 0  [repeated pattern]
+D -> 0  [repeated pattern]
+A -> 0  [repeated pattern]
+D -> 0  [repeated pattern]
+A -> 0  [repeated pattern]
+D -> 0  [repeated pattern]
+D -> 0  [repeated pattern]
+QFR -> 012  [repeated pattern]
+ZIXL -> 0123  [repeated pattern]
+STQKF -> 01234  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+BGK -> 012  [repeated pattern]
+GY -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+ZVG -> 012  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+GK -> 01  [repeated pattern]
+TBQEZSN -> 0123456  [repeated pattern]
+VITKT -> 01232  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+ZVG -> 012  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+ROYYTK -> 012234  [repeated pattern]
+ZIOL -> 0123  [repeated pattern]
+TBZTFRL -> 0120345  [repeated pattern]
+ZG -> 01  [repeated pattern]
+DGKT -> 0123  [repeated pattern]
+ZIQF -> 0123  [repeated pattern]
+ZVG -> 012  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+QL -> 01  [repeated pattern]
+VTSS -> 0122  [repeated pattern]
+VITKT -> 01232  [repeated pattern]
+OZ -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+ZG -> 01  [repeated pattern]
+STQKF -> 01234  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+BGK -> 012  [repeated pattern]
+GY -> 01  [repeated pattern]
+QSS -> 011  [repeated pattern]
+HQOKL -> 01234  [repeated pattern]
+GY -> 01  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+VIOST -> 01234  [repeated pattern]
+ZIOL -> 0123  [repeated pattern]
+DQN -> 012  [repeated pattern]
+FGZ -> 012  [repeated pattern]
+LTTD -> 0112  [repeated pattern]
+CTKN -> 0123  [repeated pattern]
+OZ -> 01  [repeated pattern]
+OL -> 01  [repeated pattern]
+TFGXUI -> 012345  [repeated pattern]
+ZG -> 01  [repeated pattern]
+KXST -> 0123  [repeated pattern]
+GXZ -> 012  [repeated pattern]
+QFN -> 012  [repeated pattern]
+ESQODL -> 012345  [repeated pattern]
+GY -> 01  [repeated pattern]
+LTEKTEN -> 0123124  [repeated pattern]
+YGK -> 012  [repeated pattern]
+TFEKNHZOFU -> 0123456718  [repeated pattern]
+DGKT -> 0123  [repeated pattern]
+ZIQF -> 0123  [repeated pattern]
+GFT -> 012  [repeated pattern]
+DTLLQUT -> 0122341  [repeated pattern]
+XLOFU -> 01234  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+LQDT -> 0123  [repeated pattern]
+ATN -> 012  [repeated pattern]
+DGKTGCTK -> 01231432  [repeated pattern]
+OY -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+ZG -> 01  [repeated pattern]
+ZTBZ -> 0120  [repeated pattern]
+ZITF -> 0123  [repeated pattern]
+UOCTF -> 01234  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+BGK -> 012  [repeated pattern]
+GY -> 01  [repeated pattern]
+DQFN -> 0123  [repeated pattern]
+HQOKL -> 01234  [repeated pattern]
+GY -> 01  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+GK -> 01  [repeated pattern]
+ZVG -> 012  [repeated pattern]
+LXYYOEOTFZSN -> 012234356789  [repeated pattern]
+SGFU -> 0123  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+OZ -> 01  [repeated pattern]
+OL -> 01  [repeated pattern]
+HGLLOWST -> 01223456  [repeated pattern]
+ZG -> 01  [repeated pattern]
+HTKYGKD -> 0123425  [repeated pattern]
+YKTJXTFEN -> 012342567  [repeated pattern]
+QL -> 01  [repeated pattern]
+OF -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+EIQHZTK -> 0123456  [repeated pattern]
+ZIGXUI -> 012341  [repeated pattern]
+DGKT -> 0123  [repeated pattern]
+EGDHSTB -> 0123456  [repeated pattern]
+QFR -> 012  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+DTLLQUTL -> 01223412  [repeated pattern]
+LTT -> 011  [repeated pattern]
+YGK -> 012  [repeated pattern]
+QF -> 01  [repeated pattern]
+QF -> 01  [repeated pattern]
+TBQDHST -> 0123450  [repeated pattern]
+GY -> 01  [repeated pattern]
+ZIOL -> 0123  [repeated pattern]
+OL -> 01  [repeated pattern]
+UOCTF -> 01234  [repeated pattern]
+WN -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+HKGPTEZ -> 0123456  [repeated pattern]
+QL -> 01  [repeated pattern]
+HQKZ -> 0123  [repeated pattern]
+GY -> 01  [repeated pattern]
+VIOEI -> 01231  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+XL -> 01  [repeated pattern]
+QFR -> 012  [repeated pattern]
+XA -> 01  [repeated pattern]
+VTKT -> 0121  [repeated pattern]
+QWST -> 0123  [repeated pattern]
+ZG -> 01  [repeated pattern]
+RTEKNHZ -> 0123456  [repeated pattern]
+LTFZ -> 0123  [repeated pattern]
+WN -> 01  [repeated pattern]
+ZIT -> 012  [repeated pattern]
+LGCOTZ -> 012345  [repeated pattern]
+XFOGF -> 01231  [repeated pattern]
+ZIQZ -> 0120  [repeated pattern]
+VTKT -> 0121  [repeated pattern]
+TFEKNHZTR -> 012345607  [repeated pattern]
+VOZI -> 0123  [repeated pattern]
+HGKZOGFL -> 01234156  [repeated pattern]
+GY -> 01  [repeated pattern]
+Q -> 0  [repeated pattern]
+GFT -> 012  [repeated pattern]
+ZODT -> 0123  [repeated pattern]
+HQR -> 012  [repeated pattern]
+GCTK -> 0123  [repeated pattern]
+
+========== PARTIAL PLAINTEXT ==========
+___ _________ _____ ___-____ ___ __________, _____ ___ ___________ __ ___
+__ ___ ___ ____ _____ ________ _________ ____ ____ _____ _______ ________
+________ __________ __ _____ __ _____ ______ __________ ____ _______.
+_______________ ___ _____, ___-____ ___ __________ __ ______ ____ ________ _______ __ ___ _ ______ __ _________. ____ _________ __ ____ ___ ___ __
+__ ____ __ ___ _______.
+2 ____ ______ ___ __________ __ ___ ______ ___ _______
+____ ____ ________ (__ __ ___ __ _________ __ ________ _____ ___ _____ _ ____
+____ ___), ___ __ ___________ ____ ___ _______ ______ _______ __ _______ (__
+_____ _____ __) ___ ____ ___ _______ ____ __.
+________, ___ ___-____ ___—__ ___ ____ _________—__ ____ ______ __ ____
+____ (____ _ _____ ___). ________ __ ___ ___ ___ ______ _ ______ __ _______
+____ ________ ________ ___ _________, __ __ ____ __ ___ ____ __________ ____
+____ ___ _______ ____ ___ ____ ___ _____ _ ___ __ ___________. __ __________,
+___ ___ ________ _, _0 ___ _________ _____ ___ ____ (_______) ___ _. __
+_________ ___ _______ _ = _ ⊕ _ ___ _
+0 = _0 ⊕ _ ___ _______
+_ ⊕ _
+0 = (_ ⊕ _) ⊕ (_0 ⊕ _) = _ ⊕ _0
+___ ____ _____ ___ ___ __ ___ ___ ________ __, ____________, _______ _____
+___ ___ ________ ______. ____ ______ _______ __ ____ ____ ___ ________ __
+____, _____ __ _______ ___ ________ __ _____ ___ ___ __ ___ _____ __ ________.
+_____ ____ ___ ___ ____ ____ ___________, __ __ ______ __ ____ ___ ___ ______
+__ _______ _______ ___ __________ ____ ____ ___ _______ _____ ___ ____ ___.
+________, __ ___ ________ __________ __ _______-________ ____, ____ _____
+___ ___ __ ____________ ____ _____ __ ________—__ ____ ___ ____________ ____
+________—__ __ ________ __ _______ _________ ________ (__ __ ___ ________
+_______, ______ ____ _______) ___ _______ ___ ________ __________. (___
+________ 2.16 ___ __ _______.) __ ___________ __________ _______ __ ____ __
+_____ __ ___ ______ _______, __ ____ __ _____ ___ __ ___ __ ____ ____ __
+_______ ___________ ____ __ ___ ______ _____ ____ ____ __________ _________
+____ ________ ________ __ _ ___-____ ___ ____ _______ _______
+
+
+========== VERIFICATION ==========
+Verification successful.
